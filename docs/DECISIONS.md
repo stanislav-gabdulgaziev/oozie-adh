@@ -22,3 +22,11 @@ Reason:
 - oozie-tools test sources are incompatible with Hadoop 3.3.6 API in the current build environment.
 - The failure is in test compilation, not in main runtime code.
 - Skipping test compilation allows proceeding to server and distro artifacts required for ADH integration.
+
+## D-007
+Temporarily exclude zookeeper-security-tests from bootstrap build.
+
+Reason:
+- The module is not required for the current ADH integration scope.
+- The failure is caused by legacy transitive dependency resolution through conjars.
+- Core runtime artifacts (server, distro, webapp) already build successfully without this module.
