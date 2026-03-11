@@ -135,7 +135,7 @@
         <module>core</module>
         <module>sharelib</module>
         <module>webapp</module>
-        <module>examples</module>
+        <!-- <module>examples</module> -->
         <module>docs</module>
         <module>tools</module>
         <module>minitest</module>
