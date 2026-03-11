@@ -126,13 +126,7 @@
             <outputDirectory>/</outputDirectory>
             <destName>oozie-client-${project.version}.tar.gz</destName>
         </file>
-        <!-- Oozie examples TAR.GZ  -->
-        <file>
-            <source>${basedir}/../examples/target/oozie-examples-${project.version}-examples.tar.gz</source>
-            <outputDirectory>/</outputDirectory>
-            <destName>oozie-examples.tar.gz</destName>
-        </file>
-        <!-- Oozie sharelib TAR.GZ  -->
+<!-- Oozie sharelib TAR.GZ  -->
         <file>
             <source>${basedir}/../sharelib/target/oozie-sharelib-${project.version}.tar.gz</source>
             <outputDirectory>/</outputDirectory>
