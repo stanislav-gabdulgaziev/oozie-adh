@@ -117,3 +117,15 @@ Reason:
 Scope:
 - runtime/bootstrap packaging for reproducible DB setup and startup
 
+
+## D-017
+Include core Oozie runtime jars in distro lib/.
+
+Reason:
+- fresh runtime distro failed during ooziedb.sh execution with missing Oozie classes
+- BuildInfo.class is packaged in oozie-client-<version>.jar
+- CLI/bootstrap path relies on lib/* and libtools/*, not on embedded webapp WEB-INF/lib
+- include oozie-client and oozie-core jars directly into distro lib for reproducible CLI/runtime startup
+
+Scope:
+- runtime/bootstrap packaging only
