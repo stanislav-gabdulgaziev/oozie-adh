@@ -122,12 +122,6 @@
             <source>${basedir}/../core/target/oozie-core-${project.version}-tests.jar</source>
             <outputDirectory>/oozie-core</outputDirectory>
         </file>
-<!-- Oozie Client TAR.GZ  -->
-        <file>
-            <source>${basedir}/../client/target/oozie-client-${project.version}-client.tar.gz</source>
-            <outputDirectory>/</outputDirectory>
-            <destName>oozie-client-${project.version}.tar.gz</destName>
-        </file>
 <!-- Oozie sharelib TAR.GZ  -->
         <file>
             <source>${basedir}/../sharelib/target/oozie-sharelib-${project.version}.tar.gz</source>

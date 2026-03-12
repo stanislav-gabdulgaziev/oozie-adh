@@ -60,3 +60,12 @@ Reason:
 - assembly failed while packaging distro on this artifact
 - docs bundle is not required for runtime startup and ADH compatibility smoke testing
 - focus of current bootstrap is a reproducible runtime distribution
+
+## D-012
+Exclude nested client tarball from distro assembly.
+
+Reason:
+- distro assembly expected client/target/oozie-client-<version>-client.tar.gz
+- assembly failed while packaging distro on this artifact
+- nested client tarball is not required for runtime startup and ADH compatibility smoke testing
+- focus of current bootstrap is a reproducible runtime distribution
