@@ -51,3 +51,12 @@ Artifacts included:
 - hadoop-mapreduce-client-jobclient
 - hadoop-yarn-api
 - hadoop-yarn-common
+
+## D-011
+Exclude docs artifact from distro assembly.
+
+Reason:
+- distro assembly expected docs/target/oozie-docs-<version>-docs.zip
+- assembly failed while packaging distro on this artifact
+- docs bundle is not required for runtime startup and ADH compatibility smoke testing
+- focus of current bootstrap is a reproducible runtime distribution
