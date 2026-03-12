@@ -117,14 +117,3 @@ Reason:
 Scope:
 - runtime/bootstrap packaging for reproducible DB setup and startup
 
-## D-016
-Include commons-cli in distro lib/.
-
-Reason:
-- fresh runtime distro failed during ooziedb.sh execution with:
-  ClassNotFoundException: org.apache.commons.cli.ParseException
-- old working runtime contained lib/commons-cli-1.2.jar
-- fresh distro contained commons-cli only inside embedded webapp, which is insufficient for CLI tools
-
-Scope:
-- runtime/bootstrap packaging for reproducible DB setup and startup
