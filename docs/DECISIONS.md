@@ -30,3 +30,24 @@ Reason:
 - The module is not required for the current ADH integration scope.
 - The failure is caused by legacy transitive dependency resolution through conjars.
 - Core runtime artifacts (server, distro, webapp) already build successfully without this module.
+
+## D-010
+Include Hadoop runtime client jars into distro lib/.
+
+Reason:
+- runtime startup on Hadoop 3.3.6 failed with:
+  NoClassDefFoundError: org/apache/hadoop/mapred/JobConf
+- successful manual workaround required:
+  cp -v libext/*.jar lib/
+- distro packaging is updated so Hadoop runtime jars are copied during build
+  and included directly into /lib in the resulting runtime distribution.
+
+Artifacts included:
+- hadoop-auth
+- hadoop-common
+- hadoop-hdfs-client
+- hadoop-mapreduce-client-common
+- hadoop-mapreduce-client-core
+- hadoop-mapreduce-client-jobclient
+- hadoop-yarn-api
+- hadoop-yarn-common

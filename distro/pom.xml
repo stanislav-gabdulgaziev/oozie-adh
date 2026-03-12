@@ -87,6 +87,67 @@
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.6.1</version>
+                <executions>
+                    <execution>
+                        <id>copy-hadoop-runtime-jars</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/generated-lib</outputDirectory>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.apache.hadoop</groupId>
+                                    <artifactId>hadoop-auth</artifactId>
+                                    <version>${hadoop.version}</version>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.hadoop</groupId>
+                                    <artifactId>hadoop-common</artifactId>
+                                    <version>${hadoop.version}</version>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.hadoop</groupId>
+                                    <artifactId>hadoop-hdfs-client</artifactId>
+                                    <version>${hadoop.version}</version>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.hadoop</groupId>
+                                    <artifactId>hadoop-mapreduce-client-common</artifactId>
+                                    <version>${hadoop.version}</version>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.hadoop</groupId>
+                                    <artifactId>hadoop-mapreduce-client-core</artifactId>
+                                    <version>${hadoop.version}</version>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.hadoop</groupId>
+                                    <artifactId>hadoop-mapreduce-client-jobclient</artifactId>
+                                    <version>${hadoop.version}</version>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.hadoop</groupId>
+                                    <artifactId>hadoop-yarn-api</artifactId>
+                                    <version>${hadoop.version}</version>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.hadoop</groupId>
+                                    <artifactId>hadoop-yarn-common</artifactId>
+                                    <version>${hadoop.version}</version>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
                 <configuration>
                     <skip>true</skip>
