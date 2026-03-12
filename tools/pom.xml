@@ -133,6 +133,15 @@
                         <descriptor>../src/main/assemblies/tools.xml</descriptor>
                     </descriptors>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>make-tools-bundle</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

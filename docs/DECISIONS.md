@@ -95,3 +95,12 @@ Reason:
 
 Scope:
 - runtime/bootstrap packaging for reproducible Oozie startup and CLI availability
+
+## D-015
+Bind tools assembly to package phase.
+
+Reason:
+- fresh runtime distro was missing libtools content required by ooziedb.sh
+- OozieDBCLI class is packaged in tools/target/oozie-tools-<version>.jar
+- distro assembly expects expanded tools bundle under tools/target/oozie-tools-<version>-tools/...
+- tools module configured assembly plugin but did not bind it to package
