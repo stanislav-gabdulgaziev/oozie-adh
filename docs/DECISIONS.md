@@ -104,3 +104,27 @@ Reason:
 - OozieDBCLI class is packaged in tools/target/oozie-tools-<version>.jar
 - distro assembly expects expanded tools bundle under tools/target/oozie-tools-<version>-tools/...
 - tools module configured assembly plugin but did not bind it to package
+
+## D-016
+Include commons-cli in distro lib/.
+
+Reason:
+- fresh runtime distro failed during ooziedb.sh execution with:
+  ClassNotFoundException: org.apache.commons.cli.ParseException
+- old working runtime contained lib/commons-cli-1.2.jar
+- fresh distro contained commons-cli only inside embedded webapp, which is insufficient for CLI tools
+
+Scope:
+- runtime/bootstrap packaging for reproducible DB setup and startup
+
+## D-016
+Include commons-cli in distro lib/.
+
+Reason:
+- fresh runtime distro failed during ooziedb.sh execution with:
+  ClassNotFoundException: org.apache.commons.cli.ParseException
+- old working runtime contained lib/commons-cli-1.2.jar
+- fresh distro contained commons-cli only inside embedded webapp, which is insufficient for CLI tools
+
+Scope:
+- runtime/bootstrap packaging for reproducible DB setup and startup
