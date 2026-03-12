@@ -69,3 +69,16 @@ Reason:
 - assembly failed while packaging distro on this artifact
 - nested client tarball is not required for runtime startup and ADH compatibility smoke testing
 - focus of current bootstrap is a reproducible runtime distribution
+
+## D-013
+Bind sharelib assembly to package phase.
+
+Reason:
+- distro assembly expects sharelib/target/oozie-sharelib-<version>.tar.gz
+- sharelib module configured maven-assembly-plugin but did not bind it to package
+- as a result, sharelib tarball was not produced during normal reactor build
+- sharelib tarball is required for later Oozie integration scenarios on Hadoop/ADH
+
+Scope:
+- bootstrap/runtime packaging
+- keeps sharelib artifact available for subsequent sharelib create / HDFS upload steps
