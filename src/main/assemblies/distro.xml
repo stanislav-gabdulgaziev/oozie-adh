@@ -26,6 +26,26 @@
     <fileSets>
 
         <fileSet>
+            <directory>${basedir}/../tools/src/main/bin</directory>
+            <outputDirectory>/bin</outputDirectory>
+            <fileMode>0755</fileMode>
+            <includes>
+                <include>ooziedb.sh</include>
+                <include>oozie-diag-bundle-collector.sh</include>
+                <include>instrumentation-log-parser.py</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${basedir}/../client/src/main/bin</directory>
+            <outputDirectory>/bin</outputDirectory>
+            <fileMode>0755</fileMode>
+            <includes>
+                <include>oozie</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
             <directory>${project.build.directory}/generated-lib</directory>
             <outputDirectory>/lib</outputDirectory>
             <includes>

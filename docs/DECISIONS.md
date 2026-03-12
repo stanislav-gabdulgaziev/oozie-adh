@@ -82,3 +82,16 @@ Reason:
 Scope:
 - bootstrap/runtime packaging
 - keeps sharelib artifact available for subsequent sharelib create / HDFS upload steps
+
+## D-014
+Include missing runtime scripts into distro bin/.
+
+Reason:
+- fresh runtime distro was missing scripts required by startup and CLI usage:
+  ooziedb.sh, oozie, oozie-diag-bundle-collector.sh, instrumentation-log-parser.py
+- oozie-sys.sh invokes bin/ooziedb.sh during startup
+- oozie CLI script is sourced from client/src/main/bin/oozie
+- auxiliary runtime scripts are sourced from tools/src/main/bin
+
+Scope:
+- runtime/bootstrap packaging for reproducible Oozie startup and CLI availability
