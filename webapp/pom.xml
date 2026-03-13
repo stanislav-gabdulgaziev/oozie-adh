@@ -120,6 +120,21 @@
             </exclusions>
         </dependency>
 
+
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-common</artifactId>
+            <version>${hadoop.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-auth</artifactId>
+            <version>${hadoop.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.oozie</groupId>
             <artifactId>oozie-docs</artifactId>
@@ -190,12 +205,7 @@
                             <goal>copy</goal>
                         </goals>
                         <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>org.apache.oozie</groupId>
-                                    <artifactId>oozie-sharelib-pig</artifactId>
-                                </artifactItem>
-                                <artifactItem>
+                            <artifactItems><artifactItem>
                                     <groupId>org.apache.oozie</groupId>
                                     <artifactId>oozie-sharelib-hive</artifactId>
                                 </artifactItem>
@@ -293,12 +303,7 @@
                     <artifactId>hadoop-client</artifactId>
                     <scope>compile</scope>
                 </dependency>
-                <dependency>
-                    <groupId>org.apache.hadoop</groupId>
-                    <artifactId>hadoop-auth</artifactId>
-                    <scope>compile</scope>
-                </dependency>
-                <dependency>
+<dependency>
                     <groupId>org.apache.hive.hcatalog</groupId>
                     <artifactId>hive-webhcat-java-client</artifactId>
                     <scope>compile</scope>

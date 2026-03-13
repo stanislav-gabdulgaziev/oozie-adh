@@ -24,6 +24,34 @@
     <includeBaseDirectory>true</includeBaseDirectory>
     <baseDirectory>oozie-${project.version}</baseDirectory>
     <fileSets>
+
+        <fileSet>
+            <directory>${basedir}/../tools/src/main/bin</directory>
+            <outputDirectory>/bin</outputDirectory>
+            <fileMode>0755</fileMode>
+            <includes>
+                <include>ooziedb.sh</include>
+                <include>oozie-diag-bundle-collector.sh</include>
+                <include>instrumentation-log-parser.py</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${basedir}/../client/src/main/bin</directory>
+            <outputDirectory>/bin</outputDirectory>
+            <fileMode>0755</fileMode>
+            <includes>
+                <include>oozie</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>${project.build.directory}/generated-lib</directory>
+            <outputDirectory>/lib</outputDirectory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+        </fileSet>
         <!-- Oozie configuration files -->
         <fileSet>
             <directory>${basedir}/../core/src/main/conf/</directory>
@@ -114,25 +142,7 @@
             <source>${basedir}/../core/target/oozie-core-${project.version}-tests.jar</source>
             <outputDirectory>/oozie-core</outputDirectory>
         </file>
-        <!-- Oozie Documentation -->
-        <file>
-            <source>${basedir}/../docs/target/oozie-docs-${project.version}-docs.zip</source>
-            <outputDirectory>/</outputDirectory>
-            <destName>docs.zip</destName>
-        </file>
-        <!-- Oozie Client TAR.GZ  -->
-        <file>
-            <source>${basedir}/../client/target/oozie-client-${project.version}-client.tar.gz</source>
-            <outputDirectory>/</outputDirectory>
-            <destName>oozie-client-${project.version}.tar.gz</destName>
-        </file>
-        <!-- Oozie examples TAR.GZ  -->
-        <file>
-            <source>${basedir}/../examples/target/oozie-examples-${project.version}-examples.tar.gz</source>
-            <outputDirectory>/</outputDirectory>
-            <destName>oozie-examples.tar.gz</destName>
-        </file>
-        <!-- Oozie sharelib TAR.GZ  -->
+<!-- Oozie sharelib TAR.GZ  -->
         <file>
             <source>${basedir}/../sharelib/target/oozie-sharelib-${project.version}.tar.gz</source>
             <outputDirectory>/</outputDirectory>

@@ -135,14 +135,14 @@
         <module>core</module>
         <module>sharelib</module>
         <module>webapp</module>
-        <module>examples</module>
+        <!-- <module>examples</module> -->
         <module>docs</module>
         <module>tools</module>
         <module>minitest</module>
         <module>fluent-job</module>
         <module>server</module>
         <module>distro</module>
-        <module>zookeeper-security-tests</module>
+        <!-- <module>zookeeper-security-tests</module> -->
     </modules>
 
     <repositories>
