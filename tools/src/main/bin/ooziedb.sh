@@ -34,6 +34,7 @@ BASEDIR=`dirname ${PRG}`
 BASEDIR=`cd ${BASEDIR}/..;pwd`
 
 source ${BASEDIR}/bin/oozie-sys.sh -silent
+JETTY_LIB_DIR=${BASEDIR}/embedded-oozie-server/webapp/WEB-INF/lib
 
 OOZIEDB_OPTS="-Doozie.home.dir=${OOZIE_HOME}";
 OOZIEDB_OPTS="${OOZIEDB_OPTS} -Doozie.config.dir=${OOZIE_CONFIG}";
@@ -41,8 +42,8 @@ OOZIEDB_OPTS="${OOZIEDB_OPTS} -Doozie.log.dir=${OOZIE_LOG}";
 OOZIEDB_OPTS="${OOZIEDB_OPTS} -Doozie.data.dir=${OOZIE_DATA}";
 OOZIEDB_OPTS="${OOZIEDB_OPTS} -Dderby.stream.error.file=${OOZIE_LOG}/derby.log"
 
-#Create lib directory from war if lib doesn't exist
-if [ ! -d "${BASEDIR}/lib" ]; then
+# Create lib directory from war if lib doesn't exist and there is no embedded distro layout.
+if [ ! -d "${BASEDIR}/lib" ] && [ ! -d "${JETTY_LIB_DIR}" ]; then
   mkdir ${BASEDIR}/lib
   unzip ${BASEDIR}/oozie.war WEB-INF/lib/*.jar -d ${BASEDIR}/lib > /dev/null
   mv ${BASEDIR}/lib/WEB-INF/lib/*.jar ${BASEDIR}/lib/
@@ -52,6 +53,9 @@ fi
 
 OOZIECPPATH=""
 for i in "${BASEDIR}/libtools/"*.jar; do
+  OOZIECPPATH="${OOZIECPPATH}:$i"
+done
+for i in "${JETTY_LIB_DIR}/"*.jar; do
   OOZIECPPATH="${OOZIECPPATH}:$i"
 done
 for i in "${BASEDIR}/lib/"*.jar; do

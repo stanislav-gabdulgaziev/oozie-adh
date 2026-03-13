@@ -149,3 +149,36 @@ Scope:
 Verification:
 - `mvn -Dmaven.repo.local=/tmp/m2repo_home -pl core -am package -DskipTests`
 - result: `BUILD SUCCESS`
+
+## D-019
+Treat ADH 4.1.0 as the compatibility baseline for Oozie integration work.
+
+Reason:
+- the project goal is not a generic upstream Oozie 5.2.1 build
+- the actual target is opensource Oozie deployed as an external service in
+  Arenadata Hyperwave (ADH) 4.1.0
+- ADH 4.1.0 defines a materially newer ecosystem baseline than upstream Oozie:
+  Hadoop 3.3.6, Hive 4.0.1, Tez 0.10.4, Spark 3.5.x, Flink 1.20.x, Hue 4.11.x,
+  Ozone 2.0.x
+- the current upstream Oozie dependency baseline in this repository is
+  significantly older:
+  Hadoop 2.6.0, Hive 1.2.2, Tez 0.8.4, Spark 1.6.1, Scala 2.10
+- therefore the work must be treated as a compatibility adaptation effort, not
+  as a simple version bump or packaging-only exercise
+
+Scope:
+- build-time dependency alignment for Hadoop 3.3.6
+- Hive / HCatalog adaptation for Hive 4.0.1 and Tez 0.10.4
+- Spark integration and sharelib adaptation for Spark 3.5.x
+- runtime validation in two modes:
+  without Kerberos and with Kerberos / Active Directory enabled
+
+Non-goals:
+- Flink does not require a native Oozie action for this scope;
+  shell-based orchestration is acceptable
+- Hue and Ozone are primarily runtime integration concerns and are not, by
+  themselves, reasons to introduce direct compile-time dependencies into Oozie
+
+Verification impact:
+- successful validation requires both build adaptation and runtime integration
+  scenarios against an actual ADH 4.1.0-compatible stack

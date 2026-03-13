@@ -80,7 +80,7 @@ setup_jetty_opts() {
   # add required native libraries such as compression codecs
   jetty_opts="${jetty_opts} -Djava.library.path=${JAVA_LIBRARY_PATH}";
 
-  jetty_opts="${jetty_opts} -cp ${JETTY_DIR}/*:${JETTY_DIR}/dependency/*:${BASEDIR}/lib/*:${BASEDIR}/libtools/*:${JETTY_DIR}"
+  jetty_opts="${jetty_opts} -cp ${OOZIE_CONFIG}:${JETTY_DIR}/*:${JETTY_DIR}/dependency/*:${JETTY_DIR}/webapp/WEB-INF/lib/*:${BASEDIR}/lib/*:${BASEDIR}/libtools/*:${JETTY_DIR}"
   echo "Adding to JETTY_OPTS:     ${jetty_opts}"
 
   export JETTY_OPTS="${JETTY_OPTS} ${jetty_opts}"

@@ -273,7 +273,8 @@ public class EmbeddedOozieServer {
             embeddedOozieServer = guiceInjector.getInstance(EmbeddedOozieServer.class);
         }
         catch (final ProvisionException ex) {
-            LOG.error(ex.getMessage());
+            ex.printStackTrace(System.err);
+            LOG.error(ex.getMessage(), ex);
             System.exit(1);
         }
 
@@ -282,7 +283,8 @@ public class EmbeddedOozieServer {
         try {
             embeddedOozieServer.start();
         } catch (final Exception e) {
-            LOG.error(String.format("Could not start EmbeddedOozieServer! Error message: %s", e.getMessage()));
+            e.printStackTrace(System.err);
+            LOG.error(String.format("Could not start EmbeddedOozieServer! Error message: %s", e.getMessage()), e);
             System.exit(1);
         }
         embeddedOozieServer.join();
