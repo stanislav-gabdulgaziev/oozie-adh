@@ -129,3 +129,23 @@ Reason:
 
 Scope:
 - runtime/bootstrap packaging only
+
+## D-018
+Avoid conjars-only pentaho aggdesigner dependency in Hive dependency paths.
+
+Reason:
+- `org.apache.hive:hive-exec` pulls `org.pentaho:pentaho-aggdesigner-algorithm:5.1.5-jhyde`
+  through Calcite-era transitive dependencies
+- that artifact depends on `conjars.org`, which is not reliable for reproducible builds
+- Oozie already uses the replacement pattern in other modules:
+  exclude `pentaho-aggdesigner-algorithm` and add `net.hydromatic:aggdesigner-algorithm:6.0`
+- the issue was reachable through two paths in this repo:
+  `sharelib/hcatalog` and the full `core` reactor path via HCatalog/WebHCat dependencies
+
+Scope:
+- [`/home/codexvpn/oozie/sharelib/hcatalog/pom.xml`](/home/codexvpn/oozie/sharelib/hcatalog/pom.xml)
+- [`/home/codexvpn/oozie/core/pom.xml`](/home/codexvpn/oozie/core/pom.xml)
+
+Verification:
+- `mvn -Dmaven.repo.local=/tmp/m2repo_home -pl core -am package -DskipTests`
+- result: `BUILD SUCCESS`
